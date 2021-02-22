@@ -61,22 +61,34 @@
 
   <script>
     function playSound(e) {
+      // 엘리먼트를 찾는다.
       const audio = document.querySelector(`audio[data-key='${e.keyCode}']`)
       const key = document.querySelector(`.key[data-key='${e.keyCode}']`)
 
+      // 엘리먼트가 없으면 리턴한다.
       if (!audio) return
+
+      // 키 엘리먼트에 'playing' 클래스 값을 추가한다.
       key.classList.add('playing')
+      // 오디오 엘리먼트의 현재 위치(초)를 0으로 설정한다.
       audio.currentTime = 0
+      // 오디오 엘리먼트를 플레이한다.
       audio.play()
     }
 
     function removeTransition(e) {
+      // TransitionEvent의 propertyName을 확인한다.
       if (e.propertyName !== 'transform') return
+
+      // 대상(e.target) 엘리먼트에 'playing' 클래스 값을 제거한다.
       this.classList.remove('playing')
     }
 
+    // 키의 transition이 끝나면 리스너를 호출한다.
     const keys = document.querySelectorAll('.key')
     keys.forEach(key => key.addEventListener('transitionend', removeTransition))
+
+    // keydown 이벤트가 window에 전달되면 리스너를 호출한다.
     window.addEventListener('keydown', playSound)
   </script>
 
