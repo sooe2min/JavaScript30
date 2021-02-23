@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Scoped CSS Variables and JS</title>
 </head>
+
 <body>
   <h2>Update CSS Variables with <span class='hl'>JS</span></h2>
 
@@ -20,11 +22,17 @@
 
   <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
 
-  <style>
 
+  <style>
     /*
       misc styles, nothing to do with CSS variables
     */
+
+    :root {
+      --spacing: 20px;
+      --blur: 5px;
+      --base: red;
+    }
 
     body {
       text-align: center;
@@ -42,10 +50,37 @@
     input {
       width: 100px;
     }
+
+    .hl {
+      color: var(--base);
+    }
+
+    img {
+      padding: var(--spacing);
+      filter: blur(var(--blur));
+      background: var(--base);
+    }
   </style>
 
+
   <script>
+    // all input, not array
+    const inputs = document.querySelectorAll('input')
+
+    // 리스너
+    function handleUpdate() {
+      // 대상 input의 dataset(data-sizing="px")
+      const prefix = this.dataset.sizing || ''
+      // 문서의 루트 엘리먼트 스타일의 속성을 설정한다.
+      document.documentElement.style.setProperty(`--${this.name}`, `${this.value}` + prefix)
+    }
+
+    // input에 이벤트가 전달되면 리스너를 호출한다.
+    inputs.forEach(input => input.addEventListener('change', handleUpdate))
+    inputs.forEach(input => input.addEventListener('mousemove', handleUpdate))
   </script>
 
+
 </body>
+
 </html>
