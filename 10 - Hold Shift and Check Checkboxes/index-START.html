@@ -101,28 +101,21 @@
 
     let lastChecked
 
-    const handleCheck = function (e) {
+    function handleCheck(e) {
       let inBetween = false
-
       if (e.shiftKey && this.checked) {
         checkboxes.forEach(checkbox => {
-          console.log(checkbox)
-          if (checkbox === this || checkbox === lastChecked) {
+          if (checkbox === lastChecked || checkbox === this) {
             inBetween = !inBetween
-            console.log('Starting to check them in between!');
-            console.log(inBetween)
           }
-
-          if (inBetween) {
-            checkbox.checked = true
-          }
+          if (inBetween) checkbox.checked = true
         })
       }
 
-      lastChecked = this;
+      lastChecked = this
     }
 
-    checkboxes.forEach(checkbox => checkbox.addEventListener('click', handleCheck))    
+    checkboxes.forEach(input => input.addEventListener('click', handleCheck))
   </script>
 </body>
 

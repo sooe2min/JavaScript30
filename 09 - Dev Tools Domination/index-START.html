@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <title>Console Tricks!</title>
 </head>
-
 <body>
 
   <p onClick="makeGreen()">×BREAK×DOWN×</p>
@@ -20,66 +18,29 @@
     }
 
     // Regular
-    console.log('Helloooooooo')
 
     // Interpolated
-    console.log('Hello %s', 'Soomin')
 
     // Styled
-    console.log('%cHello', 'font-size: 35px; background: olive; text-shadow: 10px 10px 3px yellow;')
 
     // warning!
-    console.warn('warn!!')
 
     // Error :|
-    console.error('error')
 
     // Info
-    console.info('info!!')
 
     // Testing
-    console.assert(1 === 2, 'right?')
 
     // clearing
-    // console.clear()
 
     // Viewing DOM Elements
-    const p = document.querySelector('p')
-    console.log(p)
-    console.dir(p)
 
     // Grouping together
-    dogs.forEach(dog => {
-      console.groupCollapsed(`${dog.name}`)
-      console.log(`${dog.name}`)
-      console.log(`${dog.age}`)
-      console.log(`${dog.name} is ${dog.age} years old.`)
-      console.groupEnd(`${dog.name}`)
-    })
 
     // counting
-    console.count('aaaaaaa')
-    console.count('aaaaaaa')
-    console.count('aaaaaaa')
-    console.count('aaaaaaa')
-    console.count('aaaaaaa')
-    console.count('aaaaaaa')
-    console.count('aaaaaaa')
 
     // timing
-    console.time('what time??')
-    setTimeout(() => {
-      console.timeEnd('what time??')
-    }, 3000)
-
-    console.log(1)
-
-    console.time('what??')
-    setTimeout(() => {
-      console.timeEnd('what??')
-    }, 5000)
 
   </script>
 </body>
-
 </html>
