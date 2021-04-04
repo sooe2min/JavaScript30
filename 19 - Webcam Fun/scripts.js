@@ -4,6 +4,7 @@ const ctx = canvas.getContext('2d')
 const strip = document.querySelector('.strip')
 const snap = document.querySelector('.snap')
 
+// 1
 function getVideo() {
   navigator.mediaDevices.getUserMedia({ video: true, audio: false })
     .then(localMediaStream => {
@@ -17,6 +18,7 @@ function getVideo() {
     })
 }
 
+// 3
 function paintToCanvas() {
   const width = video.videoWidth
   const height = video.videoHeight
@@ -35,6 +37,7 @@ function paintToCanvas() {
   }, 16)
 }
 
+// 4
 function takePhoto() {
   snap.currentTime = 0
   snap.play()
@@ -48,6 +51,7 @@ function takePhoto() {
   strip.insertBefore(link, strip.firstChild)
 }
 
+// 5
 function redEffect(pixels) {
   for (let i = 0; i < pixels.data.length; i += 4) {
     pixels.data[i + 0] = pixels.data[i + 0] + 100
@@ -68,4 +72,5 @@ function rgbSplit(pixels) {
 
 getVideo()
 
+// 2
 video.addEventListener('canplay', paintToCanvas)
