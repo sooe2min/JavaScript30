@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Click and Drag</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <div class="items">
     <div class="item item1">01</div>
@@ -34,8 +36,48 @@
     <div class="item item25">25</div>
   </div>
 
-<script>
-</script>
+  <script>
+    const slider = document.querySelector('.items')
+    let isDown = false
+    let startX
+    let scrollLeft
 
-  </body>
+    slider.addEventListener('mousedown', function (e) {
+      isDown = true
+      slider.classList.add('active')
+      console.log(e.pageX, slider.scrollLeft)
+      // 내가 클릭한 페이지의 위치(x)
+      startX = e.pageX - slider.offsetLeft
+      scrollLeft = slider.scrollLeft
+    })
+
+    slider.addEventListener('mouseleave', function () {
+      isDown = false
+      slider.classList.remove('active')
+    })
+
+    slider.addEventListener('mouseup', function () {
+      isDown = false
+      slider.classList.remove('active')
+    })
+
+    slider.addEventListener('mousemove', function (e) {
+      if (!isDown) return
+      // 내가 클릭한 페이지의 위치(x)
+      const x = e.pageX - slider.offsetLeft
+      const walk = x - startX
+
+      console.log(walk)
+      // 현재 scrollLeft 위치에서 이동한 거리(x - startX)만큼 스크롤링
+      // scrollLeft의 값은 +되거나 -되어야 스크롤이 움직인다..!
+      // +- 차이는 스크롤의 방향..
+      slider.scrollLeft = scrollLeft - walk
+    })
+
+
+
+  </script>
+
+</body>
+
 </html>

@@ -233,11 +233,11 @@
   </style>
 
   <script>
-    const lists = document.querySelectorAll('.cool > li')
+    const triggers = document.querySelectorAll('.cool > li')
     const background = document.querySelector('.dropdownBackground')
     const nav = document.querySelector('.top')
 
-    function backgroundOpen(e) {
+    function handleEnter(e) {
       this.classList.add('trigger-enter')
       // trigger-enter-active가 생성되기 전에 삭제하니까 삭제가 안 된다.
       setTimeout(() => this.classList.contains('trigger-enter') && this.classList.add('trigger-enter-active'), 150)
@@ -246,7 +246,7 @@
       const dropdown = this.querySelector('.dropdown')
       const dropdownCoords = dropdown.getBoundingClientRect()
       const navCoords = nav.getBoundingClientRect()
-      console.log(navCoords, dropdownCoords)
+      console.log(navCoords.top, dropdownCoords.top)
 
       const coords = {
         height: dropdownCoords.height,
@@ -261,15 +261,15 @@
       background.style.setProperty('transform', `translate(${coords.left}px, ${coords.top}px`)
     }
 
-    function backgroundClose(e) {
+    function handleLeave(e) {
       this.classList.remove('trigger-enter', 'trigger-enter-active')
       background.classList.remove('open')
     }
 
 
     // mouseover & mouseout, mouseenter & mouseleave
-    lists.forEach(li => li.addEventListener('mouseenter', backgroundOpen))
-    lists.forEach(li => li.addEventListener('mouseleave', backgroundClose))
+    triggers.forEach(trigger => trigger.addEventListener('mouseenter', handleEnter))
+    triggers.forEach(trigger => trigger.addEventListener('mouseleave', handleLeave))
   </script>
 
 </body>
