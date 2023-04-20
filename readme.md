@@ -6,7 +6,7 @@ Starter Files + Completed solutions for the JavaScript 30 Day Challenge
 
 Grab the course at [https://JavaScript30.com](https://JavaScript30.com)
 
-### Stacks
+#### Stacks
 JavaScript, HTML5, CSS
 
 #### 회고
