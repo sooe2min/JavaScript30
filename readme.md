@@ -6,6 +6,9 @@ Starter Files + Completed solutions for the JavaScript 30 Day Challenge
 
 Grab the course at [https://JavaScript30.com](https://JavaScript30.com)
 
+### Stacks
+JavaScript, HTML5, CSS
+
 #### 회고
 
 - [JavaScript Drum Kit](https://smss.netlify.app/2021-02-22-JavaScript-Drum-Kit/)
